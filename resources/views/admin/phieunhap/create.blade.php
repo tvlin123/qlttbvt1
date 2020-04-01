@@ -7,11 +7,11 @@
                 <div class="row">
                         <div class="col-xl-12">
                             <div class="breadcrumb-holder">
-                                <h1 class="main-title float-left">Tạo Phiếu Xuất Mới</h1>
+                                <h1 class="main-title float-left">Tạo Phiếu Nhập Mới</h1>
                                 <ol class="breadcrumb float-right">
                                     <li class="breadcrumb-item"><a href="{{url('admin/')  }}">trang chủ</a></li>
-                                    <li class="breadcrumb-item"><a href="{{url('admin/phieuxuat/index')  }}">Phiếu Xuất</a></li>
-                                    <li class="breadcrumb-item active">Tạo Phiếu Xuất</li>
+                                    <li class="breadcrumb-item"><a href="{{url('admin/phieunhap/index')  }}">Phiếu Nhập</a></li>
+                                    <li class="breadcrumb-item active">Tạo Phiếu Nhập</li>
                                 </ol>
                                 <div class="clearfix"></div>
                             </div>
@@ -29,7 +29,7 @@
                         <div class="card-body">
 
                           <!--start form-->
-                             <form action="{{ url('admin/phieuxuat/create') }}" method="post" >
+                             <form action="{{ url('admin/phieunhap/create') }}" method="post" >
                                     {{ csrf_field() }}
 
                               <!--start notification -->
@@ -85,17 +85,17 @@
                                   <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="id_hinhthucxuat">Màu</label>
-                                            <select class="form-control custom-select" id="id_hinhthucxuat" name="id_hinhthucxuat">
-                                              <option value="">-- Chọn hình thức xuất--</option>
-                                               @foreach($danhsachhinhthucxuat as $list)
-                                                  <option value="{{ $list->id}}">{{ $list->tenhinhthucxuat }}</option>
+                                            <label for="id_hinhthucnhap">Chọn hình thức nhập</label>
+                                            <select class="form-control custom-select" id="id_hinhthucnhap" name="id_hinhthucnhap">
+                                              <option value="">-- Chọn hình thức nhập--</option>
+                                               @foreach($danhsachhinhthucnhap as $list)
+                                                  <option value="{{ $list->id}}">{{ $list->tenhinhthucnhap }}</option>
                                                 @endforeach
                                             </select>
                                        </div>
                                        <div class="form-group">
-                                            <label for="id_nguoixuat ">Chọn người xuất</label>
-                                            <select class="form-control custom-select" id="id_nguoixuat" name="id_nguoixuat">
+                                            <label for="id_nguoinhap ">Chọn người nhập</label>
+                                            <select class="form-control custom-select" id="id_nguoinhap" name="id_nguoinhap">
                                               <option value="">-- Chọn màu--</option>
                                                @foreach($danhsachnguoidung as $list)
                                                   <option value="{{ $list->id}}">{{ $list->name }}</option>
@@ -103,18 +103,18 @@
                                             </select>
                                        </div>
                                       <div class="form-group">
-                                          <label for="lydoxuat" class="bmd-label-floating">Lý do xuất(*)</label>
-                                          <input type="text" class="form-control " id="lydoxuat" name="lydoxuat" required="true">
+                                          <label for="lydonhap" class="bmd-label-floating">Lý do nhập(*)</label>
+                                          <input type="text" class="form-control " id="lydonhap" name="lydonhap" required="true">
                                        </div>
                                        <div class="form-group">
-                                          <label for="ngayxuat" class="bmd-label-floating">Ngày xuất(*)</label>
-                                          <input type="text" class="form-control " id="ngayxuat" name="ngayxuat" required="true">
+                                          <label for="ngaynhap" class="bmd-label-floating">Ngày nhập(*)</label>
+                                          <input type="text" class="form-control " id="ngaynhap" name="ngaynhap" required="true">
                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                        <div class="form-group">
-                                          <label for="xuatcho" class="bmd-label-floating">Xuất cho(*)</label>
-                                          <input type="text" class="form-control " id="xuatcho" name="xuatcho" required="true">
+                                          <label for="nhaptu" class="bmd-label-floating">Xuất cho(*)</label>
+                                          <input type="text" class="form-control " id="nhaptu" name="nhaptu" required="true">
                                        </div>
                                        <div class="form-group">
                                           <label for="text " class="bmd-label-floating">Số điện thoại(*)</label>
@@ -132,7 +132,7 @@
                                   <div class="row">
                                       <div class="col-md-2"></div>
                                        <div class="col-md-4"><button type="submit" class="btn btn-primary btn-block mb-3"><i class="fa fa-2x fa-floppy-o "> Lưu </i></button></div>
-                                      <div class="col-md-4"><a href="{{ url('admin/phieuxuat/index') }}" class="btn btn-primary btn-block"><i class="fa fa-2x fa-arrow-left "> Trở Lại</i></a></div>
+                                      <div class="col-md-4"><a href="{{ url('admin/phieunhap/index') }}" class="btn btn-primary btn-block"><i class="fa fa-2x fa-arrow-left "> Trở Lại</i></a></div>
                                       <div class="col-md-2"></div>
                                    </div>
                                 </div>

@@ -25,6 +25,12 @@
                     <li class="submenu">
                         <a href="{{url('admin/sanpham/index')  }}"><i class="fa fa-fw fa-area-chart"></i><span>Sản Phẩm</span> </a>
                     </li>
+                     <li class="submenu">
+                        <a href="{{url('admin/phieuxuat/index')  }}"><i class="fa fa-fw fa-area-chart"></i><span>Phiếu Xuất</span> </a>
+                    </li>
+                     <li class="submenu">
+                        <a href="{{url('admin/phieunhap/index')  }}"><i class="fa fa-fw fa-area-chart"></i><span>Phiếu Nhập</span> </a>
+                    </li>
 
                    {{--  <li class="submenu">
                         <a href="#"><i class="fa fa-fw fa-table"></i> <span> Tables </span> <span class="menu-arrow"></span></a>

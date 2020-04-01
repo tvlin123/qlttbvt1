@@ -11,4 +11,8 @@ class Users extends Model
     {
         return $this->hasMany('App\PhieuXuat','id_nguoixuat','id');
     }
+     public function phieunhap()
+    {
+        return $this->hasMany('App\PhieuNhap','id_nguoinhap','id');
+    }
 }

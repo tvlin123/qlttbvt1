@@ -8,10 +8,10 @@
                 <div class="row">
                         <div class="col-xl-12">
                             <div class="breadcrumb-holder">
-                                <h1 class="main-title float-left"> Phiếu Xuất</h1>
+                                <h1 class="main-title float-left"> Phiếu Nhập</h1>
                                 <ol class="breadcrumb float-right">
                                     <li class="breadcrumb-item"><a href="{{url('admin/')  }}">trang chủ</a></li>
-                                    <li class="breadcrumb-item active"> phiếu xuất </li>
+                                    <li class="breadcrumb-item active"> phiếu Nhập </li>
                                 </ol>
                                 <div class="clearfix"></div>
                             </div>
@@ -30,7 +30,7 @@
                     <div class="col-md-12">
                       <div class="card ">
                         <div class="card-header border   " style="background-color: yellow">
-                          <h4 class="card-title h3 text-center">Hình Thức Xuất</h4>
+                          <h4 class="card-title h3 text-center">Hình Thức Nhập</h4>
                         </div>
                         <div class="card-body">
                           <div class="toolbar">
@@ -38,16 +38,16 @@
 
                           </div>
                           <div class="w-100" >
-                             <a href="{{ url('admin/phieuxuat/create')}}" class="btn btn-danger btn-sm  m-2 shadow"><i class="fa fa-plus font-weight-bold">  Thêm </i></a>
+                             <a href="{{ url('admin/phieunhap/create')}}" class="btn btn-danger btn-sm  m-2 shadow"><i class="fa fa-plus font-weight-bold">  Thêm </i></a>
                             <table class="table table-bordered " cellspacing="0" width="100%" style="width:100%">
                               <thead class="bg-primary text-white ">
                                 <tr>
                                   <th class="text-center" style="width:5%">Mã Phiếu</th>
                                   <th class="text-center" style="width:20%">Lý do</th>
-                                  <th class="text-center" style="width:10%">Ngày Xuất </th>
-                                  <th class="text-center" style="width:10%">Người Xuất </th>
+                                  <th class="text-center" style="width:10%">Ngày Nhập </th>
+                                  <th class="text-center" style="width:10%">Người Nhập </th>
                                   <th class="text-center" style="width:10%">Tổng Tiền</th>
-                                  <th class="text-center" style="width:10%">Xuất Cho</th>
+                                  <th class="text-center" style="width:10%">Nhập Cho</th>
                                   <th class="text-center" style="width:10%">Địa chỉ </th>
                                   <th class="text-center" style="width:20%">Số DT</th>
 
@@ -67,17 +67,17 @@
                                 @foreach($danhsach as $list)
                                     <tr>
                                       <td class="text-center"><p >{{ $list->id}}</p></td>
-                                      <td class="text-center">{{ $list->lydoxuat}}</td>
-                                       <td class="text-center">{{ $list->ngayxuat }}</td>
+                                      <td class="text-center">{{ $list->lydonhap}}</td>
+                                       <td class="text-center">{{ $list->ngaynhap }}</td>
                                       <td class="text-center">{{ $list->users->name }}</td>
                                       <td class="text-center">{{ $list->px_tongtien   }}</td>
-                                      <td class="text-center">{{ $list->xuatcho  }}</td>
+                                      <td class="text-center">{{ $list->nhaptu  }}</td>
                                        <td class="text-center">{{ $list->diachi   }}</td>
                                        <td class="text-center">{{ $list->sdt}}</td>
 
                                       <td class="text-right">
-                                         <a href="{{ url('admin/phieuxuat/edit',$list->id) }}" class="btn btn-link btn-warning btn-just-icon edit"><i class="fa fa-wrench"></i></a>
-                                        <a href="{{ url('admin/phieuxuat/edit',$list->id) }}" class="btn btn-link btn-warning btn-just-icon edit"><i class="fa fa-wrench"></i></a>
+                                         <a href="{{ url('admin/phieunhap/edit',$list->id) }}" class="btn btn-link btn-warning btn-just-icon edit"><i class="fa fa-wrench"></i></a>
+                                        <a href="{{ url('admin/phieunhap/edit',$list->id) }}" class="btn btn-link btn-warning btn-just-icon edit"><i class="fa fa-wrench"></i></a>
                                         <button  data-toggle="modal" data-target="#model_delete_{{$list->id}}" class="btn btn-link btn-danger btn-just-icon remove"><i class="fa fa-trash-o"></i></button>
                                       </td>
                                     </tr>
@@ -94,7 +94,7 @@
                                           </div>
                                           <div class="modal-footer justify-content-center">
 
-                                             <a  href="{{ url('admin/phieuxuat/delete',$list->id)}}" class="btn btn-danger">Có</a>
+                                             <a  href="{{ url('admin/phieunhap/delete',$list->id)}}" class="btn btn-danger">Có</a>
                                               <button type="button" class="btn btn-primary" data-dismiss="modal">Không</button>
                                           </div>
                                         </div>

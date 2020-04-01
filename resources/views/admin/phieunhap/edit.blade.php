@@ -7,11 +7,11 @@
                 <div class="row">
                         <div class="col-xl-12">
                             <div class="breadcrumb-holder">
-                                <h1 class="main-title float-left">Tạo Phiếu Xuất Mới</h1>
+                                <h1 class="main-title float-left">Sửa Phiếu Nhập </h1>
                                 <ol class="breadcrumb float-right">
                                     <li class="breadcrumb-item"><a href="{{url('admin/')  }}">trang chủ</a></li>
-                                    <li class="breadcrumb-item"><a href="{{url('admin/phieuxuat/index')  }}">Phiếu Xuất</a></li>
-                                    <li class="breadcrumb-item active">Tạo Phiếu Xuất</li>
+                                    <li class="breadcrumb-item"><a href="{{url('admin/phieunhap/index')  }}">phiếu Nhập</a></li>
+                                    <li class="breadcrumb-item active">Sửa Phiếu Nhập</li>
                                 </ol>
                                 <div class="clearfix"></div>
                             </div>
@@ -29,7 +29,7 @@
                         <div class="card-body">
 
                           <!--start form-->
-                             <form action="{{ url('admin/phieuxuat/create') }}" method="post" >
+                             <form action="{{ url('admin/phieunhap/edit',$phieunhap->id) }}" method="post" >
                                     {{ csrf_field() }}
 
                               <!--start notification -->
@@ -66,13 +66,19 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach($danhsachsanpham as $list)
-                                                    <tr>
-                                                        <td><input type="checkbox" name="sanpham[{{$list->id}}]" value="{{$list->id}}"></td>
-                                                        <td><img src="{{ url('public/upload/images/thumbs/Images/sanpham',$list->hinhanh) }}" style="width:50px;height: 50px; " class="rounded mx-auto"></td>
-                                                        <td>{{$list->tensanpham  }}</td>
-                                                        <td><input type="text" name="soluong[{{$list->id  }}]" ></td>
-                                                        <td>{{$list->frk_gianhap}}</td>
-                                                    </tr>
+                                                        <tr>
+                                                            @if($list->soluong!=null)
+                                                                 <td><input type="checkbox" name="sanpham[{{$list->id}}]" value="{{$list->id_ctphieunhap}}" checked="true" ></td>
+                                                            @else
+                                                                 <td><input type="checkbox" name="sanpham[{{$list->id}}]" value="{{$list->id}}" ></td>
+                                                            @endif
+
+
+                                                            <td><img src="{{ url('public/upload/images/thumbs/Images/sanpham',$list->hinhanh) }}" style="width:50px;height: 50px; " class="rounded mx-auto"></td>
+                                                            <td>{{$list->tensanpham  }}</td>
+                                                            <td><input type="text" name="soluong[{{$list->id  }}]" value="{{$list->soluong }}"></td>
+                                                            <td>{{$list->frk_gianhap}}</td>
+                                                        </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
@@ -85,45 +91,45 @@
                                   <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="id_hinhthucxuat">Màu</label>
-                                            <select class="form-control custom-select" id="id_hinhthucxuat" name="id_hinhthucxuat">
-                                              <option value="">-- Chọn hình thức xuất--</option>
-                                               @foreach($danhsachhinhthucxuat as $list)
-                                                  <option value="{{ $list->id}}">{{ $list->tenhinhthucxuat }}</option>
+                                            <label for="id_hinhthucnhap">Màu</label>
+                                            <select class="form-control custom-select" id="id_hinhthucnhap" name="id_hinhthucnhap">
+                                              <option value="">-- Chọn hình thức Nhập--</option>
+                                               @foreach($danhsachhinhthucnhap as $list)
+                                                   <option {{($phieunhap->id_hinhthucnhap ==$list->id)?'selected':''}}  value="{{$list->id  }}">{{ $list->tenhinhthucnhap }}</option>
                                                 @endforeach
                                             </select>
                                        </div>
                                        <div class="form-group">
-                                            <label for="id_nguoixuat ">Chọn người xuất</label>
-                                            <select class="form-control custom-select" id="id_nguoixuat" name="id_nguoixuat">
+                                            <label for="id_nguoinhap ">Chọn người Nhập</label>
+                                            <select class="form-control custom-select" id="id_nguoinhap" name="id_nguoinhap">
                                               <option value="">-- Chọn màu--</option>
                                                @foreach($danhsachnguoidung as $list)
-                                                  <option value="{{ $list->id}}">{{ $list->name }}</option>
+                                                  <option {{($phieunhap->id_nguoinhap ==$list->id)?'selected':''}}  value="{{$list->id  }}">{{ $list->name }}</option>
                                                 @endforeach
                                             </select>
                                        </div>
                                       <div class="form-group">
-                                          <label for="lydoxuat" class="bmd-label-floating">Lý do xuất(*)</label>
-                                          <input type="text" class="form-control " id="lydoxuat" name="lydoxuat" required="true">
+                                          <label for="lydonhap" class="bmd-label-floating">Lý do Nhập(*)</label>
+                                          <input type="text" class="form-control " id="lydonhap" name="lydonhap" required="true" value="{{ $phieunhap->lydonhap }}">
                                        </div>
                                        <div class="form-group">
-                                          <label for="ngayxuat" class="bmd-label-floating">Ngày xuất(*)</label>
-                                          <input type="text" class="form-control " id="ngayxuat" name="ngayxuat" required="true">
+                                          <label for="ngaynhap" class="bmd-label-floating">Ngày Nhập(*)</label>
+                                          <input type="text" class="form-control " id="ngaynhap" name="ngaynhap" required="true" value="{{ $phieunhap->ngaynhap }}">
                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                        <div class="form-group">
-                                          <label for="xuatcho" class="bmd-label-floating">Xuất cho(*)</label>
-                                          <input type="text" class="form-control " id="xuatcho" name="xuatcho" required="true">
+                                          <label for="nhaptu" class="bmd-label-floating">Nhập cho(*)</label>
+                                          <input type="text" class="form-control " id="nhaptu" name="nhaptu" required="true" value="{{ $phieunhap->nhaptu }}">
                                        </div>
                                        <div class="form-group">
-                                          <label for="text " class="bmd-label-floating">Số điện thoại(*)</label>
-                                          <input type="sdt " class="form-control " id="sdt" name="sdt" required="true">
+                                          <label for="sdt " class="bmd-label-floating">Số điện thoại(*)</label>
+                                          <input type="text" class="form-control " id="sdt" name="sdt" required="true" value="{{$phieunhap->sdt  }}">
                                        </div>
 
                                         <div class="form-group">
                                           <label for="diachi" class="bmd-label-floating">Địa chỉ(*)</label>
-                                          <textarea name="diachi" class=" form-control"></textarea>
+                                          <textarea name="diachi" class=" form-control">{{$phieunhap->diachi}}</textarea>
                                        </div>
 
                                     </div>
@@ -132,7 +138,7 @@
                                   <div class="row">
                                       <div class="col-md-2"></div>
                                        <div class="col-md-4"><button type="submit" class="btn btn-primary btn-block mb-3"><i class="fa fa-2x fa-floppy-o "> Lưu </i></button></div>
-                                      <div class="col-md-4"><a href="{{ url('admin/phieuxuat/index') }}" class="btn btn-primary btn-block"><i class="fa fa-2x fa-arrow-left "> Trở Lại</i></a></div>
+                                      <div class="col-md-4"><a href="{{ url('admin/phieunhap/index') }}" class="btn btn-primary btn-block"><i class="fa fa-2x fa-arrow-left "> Trở Lại</i></a></div>
                                       <div class="col-md-2"></div>
                                    </div>
                                 </div>

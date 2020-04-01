@@ -59,10 +59,22 @@ Route::group(['prefix'=>'admin'],function(){
     });
       Route::group(['prefix'=>'phieuxuat'],function(){
         Route::get('index','Admin\PhieuXuatController@getIndex');
+
+
         Route::get('create','Admin\PhieuXuatController@getCreate');
         Route::post('create','Admin\PhieuXuatController@postCreate');
         Route::get('edit/{id}','Admin\PhieuXuatController@getEdit');
         Route::post('edit/{id}','Admin\PhieuXuatController@postEdit');
         Route::get('delete/{id}','Admin\PhieuXuatController@getDelete');
+    });
+      Route::group(['prefix'=>'phieunhap'],function(){
+        Route::get('index','Admin\PhieuNhapController@getIndex');
+
+
+        Route::get('create','Admin\PhieuNhapController@getCreate');
+        Route::post('create','Admin\PhieuNhapController@postCreate');
+        Route::get('edit/{id}','Admin\PhieuNhapController@getEdit');
+        Route::post('edit/{id}','Admin\PhieuNhapController@postEdit');
+        Route::get('delete/{id}','Admin\PhieuNhapController@getDelete');
     });
 });
